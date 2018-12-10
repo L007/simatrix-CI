@@ -6,8 +6,8 @@ Class Product_model extends CI_Model{
 	public function show_all_product(){
 		//$query = $this->db->get('produk');
 		$this->db->SELECT('*')
-		->FROM('produk')
-		->join('users','produk.id_user=users.id_user');
+		->FROM('produk p')
+		->join('users u','p.id_user=u.id_user');
 
 		$query = $this->db->get();
 

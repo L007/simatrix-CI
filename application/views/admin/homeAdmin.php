@@ -1,3 +1,7 @@
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +55,8 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_user']; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php 
+            echo $this->session->userdata('username')?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="logout.php">Logout</a></li>
 							<!-- <li><a href="?controller=register&action=register">Register</a></li> -->
@@ -69,33 +74,38 @@
       <div class="col-md-8">
         <div class="row state-overview">
 
-        <?php foreach ($stat as $item){
-
-           ?>
-          
        
+                    
+      
+         
           <div class="col-lg-6 col-sm-6" >
             <section class="panel" style="background-color: #242D3E;">
             <div class="symbol terques">
               <i class="fa fa-users"></i>
             </div>
             <div class="value" style="margin-left: 15px;">
-              <h1 class="count" style="color: white;"><?php echo $item['jumlahTerjual']." pcs"; ?></h1>
+              <h1 class="count" style="color: white;"><?php echo $terjual->terjual." pcs"; ?></h1>
               <p style="color: white;">produk yang Terjual</p>
             </div>
           </section>
         </div>
+      
+                        
+
+
         <div class="col-lg-6 col-sm-6">
           <section class="panel" style="background-color: #242D3E;">
           <div class="symbol red">
             <i class="fa fa-gift"></i>
           </div>
           <div class="value" style="margin-left: 15px;">
-            <h1 class="count2" style="color: white;"><?php echo $item['jumlah_stok']." pcs"; ?></h1>
+            <h1 class="count2" style="color: white;"><?php echo $jumlah_stok->jumlah_stok." pcs"; ?></h1>
             <p style="color: white;">Stok produk</p>
           </div>
         </section>
       </div>
+
+
     
     <div class="col-lg-6 col-sm-6">
       <section class="panel" style="background-color: #242D3E;">
@@ -103,12 +113,13 @@
         <i class="fa fa-money"></i>
       </div>
       <div class="value" style="margin-left: 15px;">
-        <h1 class="count4" style="color: white;"><?php echo $item['produkTerlaris']; ?></h1>
+        <h1 class="count4" style="color: white;"><?php echo $produk_terlaris->nama_produk; ?></h1>
         <p style="color: white;">produk Terlaris</p>
       </div>
     </section>
   </div>
-  <?php } ?>
+ 
+
   <div class="col-md-12">
    <div class="panel-heading" style="background-color: #526485; border: none;">
       <header class="panel-title">
@@ -141,10 +152,10 @@
     <div class="panel-body" style="background-color: #242D3E; border-radius: 0px 0px 10px 10px; border: none;">
       <div class="text-center" id="author">
         <br>
-        <img src="resources/img/man.png" style="width: 190px; height: 180px;">
+        <img src="<?php echo base_url('assets/img/man.png');  ?> "style="width: 190px; height: 180px;">
         <br>
         <h3 style="color: white;">Admin Kasir</h3>
-        <small class="label label-warning" style="color: white;"><?php echo $_SESSION['nama_user']; ?></small>
+        <small class="label label-warning" style="color: white;"><?php echo $this->session->userdata('username'); ?></small>
         <br><br><br><br>
         <p style="color: white;">Selamat Datang Kembali , Selamat Bekerja Kembali</p>
       </div>

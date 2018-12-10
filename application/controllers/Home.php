@@ -7,6 +7,7 @@ Class Home extends CI_Controller{
 		parent:: __construct();
 		$this->load->model('Home_model','Home'); //model('file','objectName')
 		$this->load->model('Product_model','Product');
+		$this->load->model('Admin_model','Admin_model');
 
 	}
 
@@ -16,8 +17,17 @@ Class Home extends CI_Controller{
 
 	}
 
+	public function homeAdmin(){
+		$hasil = $this->Admin_model->show_stat_admin();
+		$data['terjual'] = $hasil['terjual'];
+		$data['jumlah_stok'] = $hasil['jumlah_stok'];
+		$data['produk_terlaris'] = $hasil['produk_terlaris'];
+		//var_dump($data);
+		$this->load->view('admin/homeAdmin',$data);
+	}
+
 
 }
 
 
- ?>
+?>

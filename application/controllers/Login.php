@@ -4,6 +4,7 @@ class Login extends CI_Controller{
 		parent::__construct();
 		$this->load->model('Login_model');
         $this->load->library('session');
+        $this->load->helper('url');
 
     }
 
@@ -18,13 +19,13 @@ class Login extends CI_Controller{
         $hasil = $this->Login_model->getCredentials($username, $password);
         
 
-        if ($hasil!=0) {
+        if ($hasil!='0') {
 
             if ($hasil->level==1) {
-             $this->load->view('admin/homeAdmin');
+             redirect('home/homeAdmin','refresh');
          }
          elseif ($hasil->level==2) {
-           // echo "2";
+            echo "2";
          }
          elseif ($hasil->level==3) {
             # code...

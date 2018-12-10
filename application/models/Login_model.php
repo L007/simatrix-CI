@@ -1,5 +1,5 @@
 <?php
-class Login_model extends CI_Model{
+Class Login_model extends CI_Model{
 
     function __construct(){
         parent::__construct();
@@ -13,10 +13,11 @@ class Login_model extends CI_Model{
         // $result = 0;
         if(!empty($hasil)){
             $this->session->set_userdata('username', $hasil->username);
+            $this->session->set_userdata('id_user',$hasil->id_user);
             return $hasil;
             
         } else{
-            return '0';
+            return 0;
         }
     }
 	
