@@ -5,8 +5,8 @@ class Login extends CI_Controller{
 		$this->load->model('Login_model');
         $this->load->library('session');
 
-	}
-	
+    }
+
     public function index(){
         $this->session->sess_destroy();
         $this->load->view('login');
@@ -15,15 +15,29 @@ class Login extends CI_Controller{
     public function getCredentials(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $hasil = $this->m_login->getCredentials($username, $password);
-        // $this->session->set_userdata('username', 'aaaaaaa');
-        // echo $this->session->userdata('username');
-        echo json_encode($hasil);
-        // print_r($hasil);
+        $hasil = $this->Login_model->getCredentials($username, $password);
+        
+
+        if ($hasil!=0) {
+
+            if ($hasil->level==1) {
+             $this->load->view('admin/homeAdmin');
+         }
+         elseif ($hasil->level==2) {
+           // echo "2";
+         }
+         elseif ($hasil->level==3) {
+            # code...
+         }
+     }
+     else{
+        show_404('error_404',TRUE);
+    }   
+
     }
 
-    function logout(){
-        $this->session->sess_destroy();
-        redirect(base_url());
+function logout(){
+    $this->session->sess_destroy();
+    redirect(base_url());
     }
 }

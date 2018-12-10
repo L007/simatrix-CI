@@ -69,14 +69,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="col-md-4">
 			<p><h1>Login</h1></p>
 			<div class="form">
-			<form method="POST">
-				<input type="hidden" name="controller" value="login">
-				<input type="hidden" name="action" value="authentication">
+			<form method="POST" action="<?php echo base_url('login/getCredentials'); ?>">
+				
 
 
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1"></span>
-					<!-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="username" required> -->
+					
 					<input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"
 					 required autofocus>
 				</div>
@@ -87,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<input name="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1"
 					 required>
 				</div>
-				<i><b><?php echo $error ?></b></i>
+				<!-- <i><b><?php echo $error ?></b></i> -->
 				<p align="right">
 					<button type="submit" class="btn btn-primary" style="margin-top:20px;">LOGIN</button>
 				</p>
