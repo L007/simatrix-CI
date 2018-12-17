@@ -35,6 +35,21 @@ Class Penjual_model extends CI_Model{
 	);
 	}
 
+	public function transaksi_penjual(){
+		$id_user = $this->session->userdata('id_user');
+		$query = "SELECT p.nama_produk,dp.jumlah,dp.total_harga,dp.tanggal,
+		(SELECT status FROM tb_penjualan WHERE id_penjualan=dp.id_penjualan) as status,
+		(SELECT u.nama FROM tb_penjualan o JOIN users u ON o.id_user=u.id_user WHERE id_penjualan=dp.id_penjualan) as pembeli
+		
+		FROM detail_penjualan dp
+		JOIN produk p on dp.id_produk=p.id_produk join users u ON p.id_user=u.id_user
+		WHERE p.id_user=".$id_user." ORDER BY dp.tanggal DESC";
+		
+
+		return $this->db->query($query)->result();
+		
+	}
+
 }
 
 
