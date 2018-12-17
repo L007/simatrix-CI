@@ -78,6 +78,39 @@ Class Product extends CI_Controller{
 		unlink('assets/foto_produk/'.$foto);
 		redirect('product/lihatProduk','refresh');
 	}
+
+	public function edit($id){
+		$where = array('id_produk'=>$id);
+		$data['produk'] = $this->Product_model->edit_data('produk',$id);
+		//var_dump($data);
+		$this->load->view('penjual/editProduk',$data);
+	}
+
+	public function updateData(){
+		$id_user = $this->session->userdata('id_user');
+		$id_produk = $this->input->post('id_produk');
+		$nama_produk = $this->input->post('nama_produk');
+		$jumlah_stok = $this->input->post('jumlah_stok');
+		$harga = $this->input->post('harga');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array(
+			
+			'nama_produk' => $nama_produk,
+			'jumlah_stok' => $jumlah_stok,
+			'harga' => $harga,
+			
+			'deskripsi' => $deskripsi
+
+
+		);
+
+		$where = array('id_produk'=>$id_produk);
+		$this->Product_model->update_data($where,$data,'produk');
+		redirect('product/lihatProduk');
+
+
+	}
 }
 
 

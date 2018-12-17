@@ -98,7 +98,7 @@
 								Jumlah stok : <?php echo $item->jumlah_stok." "; ?>pcs <br>
 
 							</p>
-							<a href="?controller=produk&action=editProduk&id_produk=<?php echo $item->id_produk; ?>" class="btn btn-primary">Edit</a>
+							<a href="<?php echo base_url('product/edit/').$item->id_produk; ?>" class="btn btn-primary">Edit</a>
 							<a href="<?php echo base_url('product/deleteProduct/').$item->id_produk.'/'.$item->foto_produk; ?>" class="btn btn-danger">Delete</a>
 						</div>
 					</div>
