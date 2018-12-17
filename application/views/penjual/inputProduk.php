@@ -2,6 +2,20 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- style custom -->
+	<link rel="stylesheet" type="text/css" 
+	href="<?php echo base_url('assets/css/style.css'); ?>">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
 
 
@@ -46,10 +60,9 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_user'] ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="logout.php">Logout</a></li>
-							<!-- <li><a href="?controller=register&action=register">Register</a></li> -->
+							<li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
 
 						</ul>
 					</li>
@@ -70,64 +83,64 @@
 					<input type="hidden" name="action" value="prosesCreateProduk">
 
 
-							<label>Nama produk</label>
-						<div class="input-group">
-							
-							<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
-							
-							<input name="nama_produk" type="text" class="form-control" placeholder="Masukkan nama produk" aria-describedby="basic-addon1"
-							required autofocus> 
-							<span class="input-group-addon" id="basic-addon1"></span>
-						</div>
-						<br>
-						<label>Jumlah produk</label>
-						<div class="input-group">
-							
-							<!-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="username" required> -->
-							<input min="1" name="jumlah_stok" type="number" class="form-control" placeholder="Masukkan jumlah stok" aria-describedby="basic-addon1"
-							required >
-							<span class="input-group-addon" id="basic-addon1">pcs</span>
-						</div>
-						<br>
-
-						<label>Harga produk</label>
-						<div class="input-group">
-							<span class="input-group-addon" id="basic-addon1">Rp</span>
-							<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
-							<input min="1" name="harga" type="number" class="form-control" placeholder="Masukkan harga" aria-describedby="basic-addon1"
-							required >
-							<span class="input-group-addon" id="basic-addon1">/pcs</span>
-						</div>
-
-						<br>		
-						<label>Deskripsi produk</label>			
-						<div class="input-group">
-							<!-- <span class="input-group-addon" id="basic-addon1"></span> -->
-							<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
-							<!-- <input name="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi produk" aria-describedby="basic-addon1"
-							required value="<?php echo $item['deskripsi']; ?>"> -->
-
-							<textarea style="width:450px; height:100px;" name="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi produk" aria-describedby="basic-addon1"
-							required></textarea>
-
-						</div>
-						
-					<br>
+					<label>Nama produk</label>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1"></span>
+
 						<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
-						<input name="foto_produk" type="file" class="form-control" aria-describedby="basic-addon1"
-						required>
+
+						<input name="nama_produk" type="text" class="form-control" placeholder="Masukkan nama produk" aria-describedby="basic-addon1"
+						required autofocus> 
+						<span class="input-group-addon" id="basic-addon1"></span>
 					</div>
-					
+					<br>
+					<label>Jumlah produk</label>
+					<div class="input-group">
 
-					<p align="right">
-						<button type="submit" class="btn btn-success" style="margin-top:20px;">Submit</button>
-					</p>
-				</form>
+						<!-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="username" required> -->
+						<input min="1" name="jumlah_stok" type="number" class="form-control" placeholder="Masukkan jumlah stok" aria-describedby="basic-addon1"
+						required >
+						<span class="input-group-addon" id="basic-addon1">pcs</span>
+					</div>
+					<br>
+
+					<label>Harga produk</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Rp</span>
+						<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
+						<input min="1" name="harga" type="number" class="form-control" placeholder="Masukkan harga" aria-describedby="basic-addon1"
+						required >
+						<span class="input-group-addon" id="basic-addon1">/pcs</span>
+					</div>
+
+					<br>		
+					<label>Deskripsi produk</label>			
+					<div class="input-group">
+						<!-- <span class="input-group-addon" id="basic-addon1"></span> -->
+						<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
+							<!-- <input name="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi produk" aria-describedby="basic-addon1"
+								required value="<?php echo $item['deskripsi']; ?>"> -->
+
+								<textarea style="width:450px; height:100px;" name="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi produk" aria-describedby="basic-addon1"
+								required></textarea>
+
+							</div>
+
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"></span>
+								<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
+								<input name="foto_produk" type="file" class="form-control" aria-describedby="basic-addon1"
+								required>
+							</div>
+
+
+							<p align="right">
+								<button type="submit" class="btn btn-success" style="margin-top:20px;">Submit</button>
+							</p>
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
 
-</body>
-</html>
+		</body>
+		</html>

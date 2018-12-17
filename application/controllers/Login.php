@@ -25,7 +25,7 @@ class Login extends CI_Controller{
              redirect('home/homeAdmin','refresh');
          }
          elseif ($hasil->level==2) {
-            echo "2";
+            redirect('home/homePenjual','refresh');
          }
          elseif ($hasil->level==3) {
             # code...

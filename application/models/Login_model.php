@@ -14,6 +14,7 @@ Class Login_model extends CI_Model{
         if(!empty($hasil)){
             $this->session->set_userdata('username', $hasil->username);
             $this->session->set_userdata('id_user',$hasil->id_user);
+            $this->session->set_userdata('level',$hasil->level);
             return $hasil;
             
         } else{

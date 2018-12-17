@@ -1,9 +1,26 @@
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <!-- style custom -->
+  <link rel="stylesheet" type="text/css" 
+  href="<?php echo base_url('assets/css/style.css'); ?>">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+</head>
 
 <body class="body-custom">
 	<!-- <h1>PENJUAL PANEL</h1> -->
@@ -27,7 +44,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kelola produk<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="?controller=produk&action=createProduk">Input data produk</a></li>
+							<li><a href="<?php echo base_url('product/createProduct'); ?>">Input data produk</a></li>
 							<li><a href="?controller=produk&action=showAllProdukPenjual">Lihat data produk</a></li>
 							<!-- <li><a href="?controller=register&action=register">Register</a></li> -->
 							
@@ -46,10 +63,9 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_user']; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="logout.php">Logout</a></li>
-							<!-- <li><a href="?controller=register&action=register">Register</a></li> -->
+							<li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
 
 						</ul>
 					</li>
@@ -63,17 +79,14 @@
 	<div class="row">
     <div class="col-md-8">
       <div class="row state-overview">
-       <?php foreach ($stat as $item){
-
-         ?>
-
+       
          <div class="col-lg-6 col-sm-6" >
           <section class="panel" style="background-color: #242D3E;">
             <div class="symbol terques">
               <i class="fa fa-users"></i>
             </div>
             <div class="value" style="margin-left: 15px;">
-              <h1 class="count" style="color: white;"><?php echo $item['terjual']." pcs"; ?></h1>
+              <h1 class="count" style="color: white;"><?php echo $terjual->terjual." pcs"; ?></h1>
               <p style="color: white;">produk yang Terjual</p>
             </div>
           </section>
@@ -84,7 +97,7 @@
               <i class="fa fa-gift"></i>
             </div>
             <div class="value" style="margin-left: 15px;">
-              <h1 class="count2" style="color: white;"><?php echo $item['jumlah_stok']." pcs"; ?></h1>
+              <h1 class="count2" style="color: white;"><?php echo $jumlah_stok->jumlah_stok." pcs"; ?></h1>
               <p style="color: white;">Stok produk</p>
             </div>
           </section>
@@ -96,12 +109,13 @@
               <i class="fa fa-money"></i>
             </div>
             <div class="value" style="margin-left: 15px;">
-              <h1 class="count4" style="color: white;"><?php echo $item['nama_produk']; ?></h1>
+              <h1 class="count4" style="color: white;"><?php echo $produk_terlaris->nama_produk; ?></h1>
               <p style="color: white;">produk Terlaris</p>
             </div>
           </section>
         </div>
-        <?php } ?>
+       
+
         <div class="col-md-12">
          <div class="panel-heading" style="background-color: #526485; border: none;">
           <header class="panel-title">
@@ -134,10 +148,10 @@
     <div class="panel-body" style="background-color: #242D3E; border-radius: 0px 0px 10px 10px; border: none;">
       <div class="text-center" id="author">
         <br>
-        <img src="resources/img/man.png" style="width: 190px; height: 180px;">
+        <img src="<?php echo base_url('assets/img/man.png'); ?>" style="width: 190px; height: 180px;">
         <br>
         <h3 style="color: white;">Admin Gudang</h3>
-        <small class="label label-warning" style="color: white;"><?php echo $_SESSION['nama_user'];?></small>
+        <small class="label label-warning" style="color: white;"><?php echo $this->session->userdata('username'); ?></small>
         <br><br><br><br>
         <p style="color: white;">Selamat Datang Kembali , Selamat Bekerja Kembali</p>
       </div>
