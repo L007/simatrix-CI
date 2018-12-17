@@ -28,9 +28,9 @@ Class Product extends CI_Controller{
 		$config['upload_path']          = 'assets/foto_produk/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['file_name']			= $fotobaru;
-		$config['max_size']             = 100;
+		/*$config['max_size']             = 1000;
 		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
+		$config['max_height']           = 768;*/
 
 		$this->load->library('upload', $config);
 
@@ -46,7 +46,7 @@ Class Product extends CI_Controller{
 		/*$cabang=$_POST['cabang'];*/
 
 // Rename nama fotonya dengan menambahkan tanggal dan jam upload
-		$fotobaru = date('dmYHis').$foto;
+		//$fotobaru = date('dmYHis').$foto;
 // Set path folder tempat menyimpan fotonya
 		//$path = "assets/foto_produk/".$fotobaru;
 
@@ -72,6 +72,11 @@ Class Product extends CI_Controller{
 	public function lihatProduk(){
 		$data['produk'] = $this->Product_model->show_all_product_penjual();
 		$this->load->view('penjual/lihatDataProduk',$data);
+	}
+	public function deleteProduct($id,$foto){
+		$this->Product_model->delete_product('produk',$id);
+		unlink('assets/foto_produk/'.$foto);
+		redirect('product/lihatProduk','refresh');
 	}
 }
 
