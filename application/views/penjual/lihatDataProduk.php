@@ -2,6 +2,20 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<!-- style custom -->
+	<link rel="stylesheet" type="text/css" 
+	href="<?php echo base_url('assets/css/style.css'); ?>">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
 <body>
 
@@ -45,7 +59,7 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_user'] ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
 
@@ -65,27 +79,27 @@
 
 
 		<div class="container">
-			<?php foreach ($posts as $item) {
+			<?php foreach ($produk as $item) {
 
 				?>
 				<div class="d-inline-block">
 					<div class="card" style="width: 25rem;">
-						<img class="card-img-top" src="foto_produk/<?php echo $item['foto_produk'] ?>" alt="Card image cap">
+						<img class="card-img-top" src="<?php echo base_url('assets/foto_produk/').$item->foto_produk; ?>" alt="Card image cap">
 						<div class="card-block">
 							<font size="4">
-							<p class="card-title"><?php echo $item['nama_produk'] ?></p></font>
+							<p class="card-title"><?php echo $item->nama_produk ?></p></font>
 							<p class="card-text">
-								<font size="4" color="#2196F3"><b><p> <?php echo "Rp ". number_format($item['harga'],0,".",".")."/pcs"; ?></p></b></font>
+								<font size="4" color="#2196F3"><b><p> <?php echo "Rp ". number_format($item->harga,0,".",".")."/pcs"; ?></p></b></font>
 
 
 							</p>
 							<p class="card-text">
 
-								Jumlah stok : <?php echo $item['jumlah_stok']." "; ?>pcs <br>
+								Jumlah stok : <?php echo $item->jumlah_stok." "; ?>pcs <br>
 
 							</p>
-							<a href="?controller=produk&action=editProduk&id_produk=<?php echo $item['id_produk']; ?>" class="btn btn-primary">Edit</a>
-							<a href="?controller=produk&action=deleteDataProdukPenjual&id_produk=<?php echo$item['id_produk']; ?>" class="btn btn-danger">Delete</a>
+							<a href="?controller=produk&action=editProduk&id_produk=<?php echo $item->id_produk; ?>" class="btn btn-primary">Edit</a>
+							<a href="?controller=produk&action=deleteDataProdukPenjual&id_produk=<?php echo$item->id_produk; ?>" class="btn btn-danger">Delete</a>
 						</div>
 					</div>
 				</div>

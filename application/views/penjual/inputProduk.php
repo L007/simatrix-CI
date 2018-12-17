@@ -78,9 +78,9 @@
 		<div class="col-md-4">
 			<p><h1>Input data produk</h1></p>
 			<div class="form">
-				<form class="form" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="controller" value="produk">
-					<input type="hidden" name="action" value="prosesCreateProduk">
+				<form class="form" action="<?php echo base_url('product/prosesInput'); ?>" 
+				method="POST" enctype="multipart/form-data">
+					
 
 
 					<label>Nama produk</label>
