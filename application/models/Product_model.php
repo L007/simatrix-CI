@@ -7,11 +7,21 @@ Class Product_model extends CI_Model{
 		//$query = $this->db->get('produk');
 		$this->db->SELECT('*')
 		->FROM('produk p')
-		->join('users u','p.id_user=u.id_user');
+		->join('users u','p.id_user=u.id_user')
+		->ORDER_BY('p.id_produk','DESC');
 
 		$query = $this->db->get();
 
 		return $query->result();
+	}
+
+	public function show_detail_product($id_produk){
+		$query="SELECT *
+		FROM produk p join users u
+		ON p.id_user=u.id_user where p.id_produk=".$id_produk;
+
+		return $this->db->query($query)->result();
+
 	}
 
 	public function show_all_product_penjual(){

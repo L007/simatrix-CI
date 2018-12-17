@@ -111,6 +111,11 @@ Class Product extends CI_Controller{
 
 
 	}
+
+	public function detailProduct($id_produk){
+		$data['produk'] = $this->Product_model->show_detail_product($id_produk);
+		$this->load->view('pembeli/detailProduk',$data);
+	}
 }
 
 

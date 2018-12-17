@@ -36,6 +36,13 @@ Class Home extends CI_Controller{
 		$this->load->view('penjual/homePenjual',$data);
 	}
 
+	public function homePembeli(){
+		$data['produk'] = $this->Product->show_all_product();
+		
+		//var_dump($data);
+		$this->load->view('pembeli/homePembeli',$data);
+	}
+
 
 }
 

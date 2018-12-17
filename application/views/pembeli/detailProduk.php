@@ -2,6 +2,20 @@
 <html>
 <head>
 	<title>detail produk</title>
+	<title>simatrix</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<!-- style custom -->
+	<link rel="stylesheet" type="text/css" 
+	href="<?php echo base_url('assets/css/style.css'); ?>">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 	
 </head>
 <body class="body-custom">
@@ -25,8 +39,8 @@
 					<!-- <li><a href="komoditas.html">Daftar Komoditas</a></li>
 					<li><a href="#">Cara Pemesanan</a></li> -->
 
-					<li><a href="?controller=keranjang&action=showCart">Keranjang</a></li>
-					<li><a href="?controller=home&action=showTransaksiPembeli">Transaksi</a></li>
+					<li><a href="#">Keranjang</a></li>
+					<li><a href="#">Transaksi</a></li>
 
 				</ul>
 				<!-- <form class="navbar-form navbar-left">
@@ -38,7 +52,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama_user']; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
 
@@ -59,24 +73,24 @@
 					<input type="hidden" name="controller" value="keranjang">
 					<input type="hidden" name="action" value="addCart">
 
-					<?php foreach ($posts as $item) {
+					<?php foreach ($produk as $item) {
 
 						?>
-						<input type="hidden" name="id_produk" value="<?php echo $item['id_produk']; ?>">
-						<h2><?php echo $item['nama_produk'] ?></h2>
+						<input type="hidden" name="id_produk" value="<?php echo $item->id_produk; ?>">
+						<h2><?php echo $item->nama_produk ?></h2>
 						<div class="card" style="width: 50rem; height:auto; margin-bottom:30px;">
-							<img class="card-img-top" src="foto_produk/<?php echo $item['foto_produk'] ?>" alt="Card image cap">
+							<img class="card-img-top" src="<?php echo base_url('assets/foto_produk/').$item->foto_produk; ?>" alt="Card image cap">
 							<div class="card-block">
-								<!-- <h2 class="card-title"><?php echo $item['nama_produk'] ?></h2> -->
+								
 								<p class="card-text">
-									<font size="4" color="#2196F3"><b><p> <?php echo "Rp ". number_format($item['harga'],0,".",".")."/kg"; ?></p></b></font>
+									<font size="4" color="#2196F3"><b><p> <?php echo "Rp ". number_format($item->harga,0,".",".")."/kg"; ?></p></b></font>
 
 
 								</p>
 								<p class="card-text">
 
-									Stok :<b> <?php echo $item['jumlah_stok']." "; ?>kg</b> <br>
-									Oleh : <b><?php echo $item['penjual']; ?></b>
+									Stok :<b> <?php echo $item->jumlah_stok." "; ?>kg</b> <br>
+									Oleh : <b><?php echo $item->nama; ?></b>
 								</p>
 
 							</div>
@@ -94,7 +108,7 @@
 
 									<p class="card-text">
 
-										<?php echo $item['deskripsi']; ?>
+										<?php echo $item->deskripsi; ?>
 									</p>
 
 								</div>
@@ -103,7 +117,7 @@
 						
 						<div class="form-group">
 							<label style="color: #242D3E;">Jumlah pembelian </label>
-							<input type="number" min="50" max="<?php echo $item['jumlah_stok']; ?>" name="jumlah" class="form-control" placeholder="Masukkan jumlah pembelian" required autofocus>
+							<input type="number" min="50" max="<?php echo $item->jumlah_stok; ?>" name="jumlah" class="form-control" placeholder="Masukkan jumlah pembelian" required autofocus>
 						</div>
 
 
