@@ -80,17 +80,17 @@
 
 			<?php 
 			$no=1;
-			foreach ($posts as $item) { ?>
+			foreach ($transaksi as $item) { ?>
 
 
 			<tr>
 				<td><?php echo $no; ?></td>
 
-				<td><?php echo $item['id_penjualan']; ?></td>
-				<td><?php echo $item['tanggal']; ?></td>
-				<td><?php echo $item['status']; ?></td>
+				<td><?php echo $item->id_penjualan; ?></td>
+				<td><?php echo $item->tanggal; ?></td>
+				<td><?php echo $item->status; ?></td>
 				<td>
-				<a href="?controller=keranjang&action=detailTransaksiPembeli&id_penjualan=<?php echo $item['id_penjualan']; ?>"> <button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button></a>
+				<a href="<?php echo base_url('transaksi/detailTransaksiPembeli/'.$item->id_penjualan) ?>"> <button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button></a>
 				</td>
 
 			</tr>
