@@ -30,6 +30,15 @@ Class Keranjang extends CI_Controller{
 			// $posts=Keranjang::showCart($id_produk);  
 			$this->load->view('pembeli/keranjang',$data);
 		}
+		else{
+			$this->load->view('pembeli/keranjang','');
+		}
 	}
+
+	public function clearCart(){
+	unset($_SESSION['id_produk']);
+	unset($_SESSION['jumlah']);
+	redirect('home/homePembeli','refresh');
+}
 }
 ?>

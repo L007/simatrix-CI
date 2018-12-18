@@ -15,7 +15,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
 	
 </head>
 <body class="body-custom">
@@ -36,12 +35,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="<?php echo base_url('home/homePembeli') ?>">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="<?php echo base_url('home/homePembeli') ?>">Home <span class="sr-only">(current)</span></a></li>
 					<!-- <li><a href="komoditas.html">Daftar Komoditas</a></li>
 						<li><a href="#">Cara Pemesanan</a></li> -->
 
-						<li><a href="#">Keranjang</a></li>
-						<li><a href="#">Transaksi</a></li>
+						<li class="active"><a href="<?php echo base_url('keranjang/showCart') ?>">Keranjang</a></li>
+						<li><a href="<?php echo base_url('transaksi/showTransaksiPembeli')?>">Transaksi</a></li>
 
 					</ul>
 				<!-- <form class="navbar-form navbar-left">
@@ -51,9 +50,9 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form> -->
 				<ul class="nav navbar-nav navbar-right">
-
+					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username') ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
 
