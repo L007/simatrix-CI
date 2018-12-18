@@ -46,7 +46,7 @@
 						</ul>
 					</li>
           <li><a href="<?php echo base_url('transaksi/transaksiPenjual') ?>">Transaksi</a></li>
-           <li><a href="?controller=peramalan&action=showPeramalan&produk=Abon+lele">Peramalan</a></li>
+          <!--  <li><a href="?controller=peramalan&action=showPeramalan&produk=Abon+lele">Peramalan</a></li> -->
           
         </ul>
 			
