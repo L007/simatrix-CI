@@ -68,22 +68,22 @@
 		<div class="col-md-4">
 			<p><h1>Register</h1></p>
 			<div class="form">
-				<form method="POST">
-					<input type="hidden" name="controller" value="register">
-					<input type="hidden" name="action" value="createUser">
+				<form method="POST" action="<?php echo base_url('register/createUser') ?>">
+					<!-- <input type="hidden" name="controller" value="register">
+					<input type="hidden" name="action" value="createUser"> -->
 
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"></span>
 						<!-- <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password" required> -->
 						<input name="nama" type="text" class="form-control" placeholder="Masukkan Nama" aria-describedby="basic-addon1"
-						required>
+						required autofocus>
 					</div>
 					<br>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"></span>
 						<!-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="username" required> -->
 						<input name="username" type="text" class="form-control" placeholder="Masukkan username" aria-describedby="basic-addon1"
-						required autofocus>
+						required >
 					</div>
 					<br>
 					<div class="input-group">

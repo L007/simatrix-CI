@@ -13,5 +13,26 @@ class Register extends CI_Controller{
         $this->load->view('register');
     }
 
+    public function createUser(){
+        $nama = $this->input->post('nama');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $email = $this->input->post('email');
+        $no_telepon = $this->input->post('no_telepon');
+        
+        $data = array(
+            'nama' => $nama,
+            'username' => $username,
+            'password' => $password,
+            'email' => $email,
+            'level' => 3,
+            'no_telepon' => $no_telepon,
+
+        );
+
+        $this->Register_model->create_user('users',$data);
+        redirect('login/','refresh');
+    }
+
 }
  ?>

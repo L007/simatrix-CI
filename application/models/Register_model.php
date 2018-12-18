@@ -6,6 +6,11 @@ Class Register_model extends CI_Model{
         $this->load->library('session');
     }
 
+    public function create_user($tabel,$data){
+    	$this->db->insert($tabel,$data);
+
+    }
+
 }
 ?>
 
