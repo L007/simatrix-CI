@@ -36,8 +36,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login/Register <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="?controller=login&action=login">Login</a></li>
-							<li><a href="?controller=register&action=register">Register</a></li>
+							<li><a href="<?php echo base_url('login/'); ?>">Login</a></li>
+							<li><a href="<?php echo base_url('register/'); ?>">Register</a></li>
 							
 						</ul>
 					</li>

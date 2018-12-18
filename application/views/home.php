@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login/Register <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?php echo base_url('login/'); ?>">Login</a></li>
-							<li><a href="index.php/register/register">Register</a></li>
+							<li><a href="<?php echo base_url('register/'); ?>">Register</a></li>
 							
 						</ul>
 					</li>
