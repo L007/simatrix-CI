@@ -32,5 +32,27 @@ Class Keranjang_model extends CI_Model{
 		}
 		return $list;
 	}
+
+	public function bayar_cart($id_user,$id_produk,$jumlah){
+		$insert1 = $this->db->query("INSERT INTO tb_penjualan (id_penjualan, id_user,tanggal,status) 
+			VALUES (NULL, '".$id_user."',curdate(),'belum bayar')");
+
+		$id_penjualan;
+		$select1=$this->db->query("SELECT * from tb_penjualan where id_user=$id_user order by id_penjualan DESC LIMIT 0,1")->result();
+		foreach ($select1 as $item) {
+			$id_penjualan=$item->id_penjualan;
+		}
+
+
+		for ($i=0; $i < count($_SESSION["id_produk"]) ; $i++) { 
+			$insert2 = $this->db->query("INSERT INTO 
+				`detail_penjualan`(`id_penjualan`, `id_produk`, `jumlah`, `total_harga`, `tanggal`) 
+				VALUES ($id_penjualan,".$_SESSION['id_produk'][$i].",".$_SESSION['jumlah'][$i].",
+				(SELECT harga from produk where id_produk=".$_SESSION['id_produk'][$i].")*".$_SESSION['jumlah'][$i].",curdate())");
+		}
+
+		unset($_SESSION['id_produk']);
+		unset($_SESSION['jumlah']);
+	}
 }
 ?>

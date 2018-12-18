@@ -14,12 +14,12 @@ Class Keranjang extends CI_Controller{
 	public function addCart(){
 		$_SESSION['id_produk'][] = $this->input->post('id_produk');
 		$_SESSION['jumlah'][] = $this->input->post('jumlah');
-		//redirect('') // ke keranjang
+		redirect('keranjang/showCart'); // ke keranjang
 
 		/*$this->session->set_flashdata('id_produk',$id_produk);
 		$this->session->set_flashdata('jumlah',$jumlah); */
 
-		var_dump($this->session->userdata('jumlah'));
+		//var_dump($this->session->userdata('jumlah'));
 	}
 
 	public function showCart(){
@@ -36,9 +36,22 @@ Class Keranjang extends CI_Controller{
 	}
 
 	public function clearCart(){
-	unset($_SESSION['id_produk']);
-	unset($_SESSION['jumlah']);
-	redirect('home/homePembeli','refresh');
-}
+		unset($_SESSION['id_produk']);
+		unset($_SESSION['jumlah']);
+		redirect('home/homePembeli','refresh');
+	}
+	public function bayarCart(){
+
+		$id_produk=$_SESSION["id_produk"];
+		$jumlah=$_SESSION["jumlah"];
+		$id_user=$_SESSION["id_user"];
+
+		$this->Keranjang_model->bayar_cart($id_user,$id_produk,$jumlah);
+
+		
+
+
+		
+	}
 }
 ?>

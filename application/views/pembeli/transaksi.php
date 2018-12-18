@@ -39,8 +39,8 @@
 					<!-- <li><a href="komoditas.html">Daftar Komoditas</a></li>
 						<li><a href="#">Cara Pemesanan</a></li> -->
 
-						<li class="active"><a href="<?php echo base_url('keranjang/showCart') ?>">Keranjang</a></li>
-						<li><a href="<?php echo base_url('transaksi/showTransaksiPembeli')?>">Transaksi</a></li>
+						<li><a href="<?php echo base_url('keranjang/showCart') ?>">Keranjang</a></li>
+						<li class="active"><a href="<?php echo base_url('transaksi/showTransaksiPembeli')?>">Transaksi</a></li>
 
 					</ul>
 				<!-- <form class="navbar-form navbar-left">
