@@ -69,9 +69,9 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<form>
-					<input type="hidden" name="controller" value="keranjang">
-					<input type="hidden" name="action" value="addCart">
+				<form action="<?php echo base_url('keranjang/addCart') ?>" method="POST" >
+					<!-- <input type="hidden" name="controller" value="keranjang">
+					<input type="hidden" name="action" value="addCart"> -->
 
 					<?php foreach ($produk as $item) {
 
