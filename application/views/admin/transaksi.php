@@ -95,7 +95,7 @@
 				<td><?php echo $item->status; ?></td>
 				<td>
 				<a href=" <?php echo base_url('transaksi/editStatusTransaksi/').$item->id_penjualan ?>"> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button></a>
-					<a href="?controller=keranjang&action=detailTransaksiAdmin&id_penjualan=<?php echo $item->id_penjualan; ?>"> <button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button></a>
+					<a href="<?php echo base_url('transaksi/detailTransaksiAdmin/').$item->id_penjualan ?>"> <button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button></a>
 
 				</td>
 

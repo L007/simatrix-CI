@@ -48,6 +48,8 @@ Class Keranjang extends CI_Controller{
 
 		$this->Keranjang_model->bayar_cart($id_user,$id_produk,$jumlah);
 
+		redirect('transaksi/showTransaksiPembeli','refresh');
+
 		
 
 

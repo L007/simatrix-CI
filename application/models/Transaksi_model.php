@@ -60,6 +60,13 @@ Class Transaksi_model extends CI_Model{
 
  	}
 
+ 	public function detail_transaksi_admin($id_penjualan){
+ 		return $this->db->query("SELECT p.nama_produk,dp.jumlah,dp.total_harga,dp.tanggal,u.nama FROM detail_penjualan dp
+		JOIN produk p on dp.id_produk=p.id_produk JOIN users u on p.id_user=u.id_user
+
+		WHERE id_penjualan=".$id_penjualan)->result();
+ 	}
+
 }
 
 ?>

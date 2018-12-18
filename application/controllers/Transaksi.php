@@ -33,10 +33,15 @@ Class Transaksi extends CI_Controller{
 		//var_dump($data);
 		$this->load->view('pembeli/detailTransaksi',$data);
 	}
+	public function detailTransaksiAdmin($id_penjualan){
+		$data['transaksi'] = $this->Transaksi_model->detail_transaksi_admin($id_penjualan);
+		//var_dump($data);
+		$this->load->view('admin/detailTransaksi',$data);
+	}
 
 	public function editStatusTransaksi($id_penjualan){
 		$this->Transaksi_model->edit_status_transaksi($id_penjualan);
-		//redirect('transaksi/showTransaksiAdmin');
+		redirect('transaksi/showTransaksiAdmin');
 	}
 
 }
